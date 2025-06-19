@@ -1,0 +1,29 @@
+{
+    "domain": {
+        "Game":{
+            "poc":"https://poc.gameapis.8wantgcr.com",
+            "dev":"https://dev.gameapis.szgfhb.com",
+            "qat":"https://qat.gameapis.szgfhb.com",
+            "stg":"https://stg.gameapis.szgfhb.com"
+        },
+        "Admin":{
+            "poc":"https://poc.adminapis.8wantgcr.com",
+            "dev":"https://dev.adminapis.szgfhb.com",
+            "qat":"https://qat.adminapis.szgfhb.com",
+            "stg":"https://stg.adminapis.szgfhb.com"
+        },
+        "Integration":{
+            "poc":"https://poc.integrationapis.8wantgcr.com",
+            "dev":"https://dev.integrationapis.szgfhb.com",
+            "qat":"https://qat.integrationapis.szgfhb.com",
+            "stg":"https://stg.integrationapis.szgfhb.com"
+        }
+    },
+    "path": {
+        "Integration": {
+            "create_player": ["POST","/create-player"],
+            "logout_player": ["POST","/logout-player"],
+            "launch_game": ["POST","/launch-game"]
+        }
+    }
+}

@@ -1,0 +1,16 @@
+pip install Appium-Python-Client
+pip install beautifulsoup4
+pip install bs4
+pip install certifi
+pip install chardet
+pip install Faker
+pip install idna
+pip install jmespath
+pip install lxml
+pip install python-dateutil
+pip install requests
+pip install six
+pip install soupsieve
+pip install text-unidecode
+pip install urllib3
+pip install xlrd

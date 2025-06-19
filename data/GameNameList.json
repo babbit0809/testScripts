@@ -1,0 +1,174 @@
+{
+    "CN":{
+        "SSC":{
+            "xjc":"新疆时时彩",
+            "lottery1":"一分彩",
+            "lottery2":"二分彩",
+            "lottery5":"五分彩",
+            "txffc":"腾讯分分彩",
+            "btcffc":"比特币分分彩",
+            "wxffc":"微信分分彩",
+            "jnd30s":"加拿大30秒",
+            "tg60":"泰国60秒",
+            "twjc":"台湾时时彩",
+            "actjc":"澳洲时时彩",
+            "cajc":"加拿大时时彩",
+            "skjc":"斯洛伐克时时彩"
+        },
+        "11x5":{
+            "sd11x5":"山东11选5",
+            "jx11x5":"江西11选5",
+            "gd11x5":"广东11选5",
+            "js11x5":"江苏11选5",
+            "tw11x5":"台湾11选5",
+            "act11x5":"澳洲11选5",
+            "ca11x5":"加拿大11选5",
+            "sk11x5":"斯洛伐克11选5"
+        },
+        "Quick3":{
+            "jsk3":"江苏快3",
+            "hubk3":"湖北快3",
+            "hquick3":"欢乐快3",
+            "quick3":"一分快3",
+            "twk3":"台湾快3",
+            "actk3":"澳洲快3",
+            "cak3":"加拿大快3",
+            "skk3":"斯洛伐克快3"
+        },
+        "PK10":{
+            "f1racing":"F1赛车",
+            "f2racing":"F2赛车",
+            "f3racing":"F3赛车",
+            "xyft":"幸运飞艇",
+            "twracing":"台湾赛车",
+            "actracing":"澳洲赛车",
+            "caracing":"加拿大赛车",
+            "skracing":"斯洛伐克赛车"
+        },
+        "MarkSix":{
+            "mark6":"香港六合彩",
+            "fmark6":"极速六合彩",
+            "mamark6":"澳门六合彩"
+        },
+        "Sport":{
+            "cmd": "CMD体育",
+            "saba": "沙巴体育",
+            "imSport": "IM体育电竞",
+            "imEsport": "IM体育电竞",
+            "leihuo": "雷火电竞",
+            "obSport": "OB体育"
+        },
+        "LiveDealer":{
+            "agCasino": "AG",
+            "bgCasino": "BG",
+            "dgCasino": "DG真人",
+            "obCasino": "OB真人"
+        },
+        "Poker":{
+            "kyPoker": "开元棋牌",
+            "blPoker": "博乐棋牌",
+            "imPoker": "IM棋牌",
+            "leg": "乐游棋牌"
+        },
+        "Slot":{
+            "mgSlot": "MG电子",
+            "agSlot": "AG电子",
+            "bgSlot": "BG"
+        },
+        "Fishing":{
+            "bgFishingMaster": "BG",
+            "bgFishing": "BG",
+            "agFishing": "AG"
+        }
+    },
+    "VN":{
+        "SSC":{
+            "xjc":"Xinjiang xổ số mỗi giờ",
+            "lottery1":"1 phút thưởng",
+            "lottery2":"2 phút thưởng",
+            "lottery5":"5 phút thưởng",
+            "txffc":"Tengxun xổ số mỗi phút",
+            "btcffc":"Bitcoin xổ số mỗi phút",
+            "wxffc":"WeChat xổ số mỗi phút",
+            "jnd30s":"Canada 30s",
+            "tg60":"Thailand 60s",
+            "twjc":"Taiwan xổ số mỗi giờ",
+            "actjc":"Australia xổ số mỗi giờ",
+            "cajc":"Canada mỗi giờ",
+            "skjc":"Slovakia mỗi giờ"
+        },
+        "11x5":{
+            "sd11x5":"Sandong 11 chọn 5",
+            "jx11x5":"Jiangxi 11 chọn 5",
+            "gd11x5":"Guangdong 11 chọn 5",
+            "js11x5":"Jiangsu 11 chọn 5",
+            "tw11x5":"Taiwan 11 chọn 5",
+            "act11x5":"Australia 11 chọn 5",
+            "ca11x5":"Canada 11 chọn 5",
+            "sk11x5":"Slovakia 11 chọn 5"
+        },
+        "Quick3":{
+            "jsk3":"Jiangsu nhanh 3",
+            "hubk3":"Hubei nhanh 3",
+            "hquick3":"Happy nhanh 3",
+            "quick3":"1 phút nhanh 3",
+            "twk3":"Taiwan nhanh 3",
+            "actk3":"Australia nhanh 3",
+            "cak3":"Canada nhanh 3",
+            "skk3":"Slovakia nhanh 3"
+        },
+        "PK10":{
+            "f1racing":"Đua xe F1",
+            "f2racing":"Đua xe F2",
+            "f3racing":"Đua xe F3",
+            "xyft":"Tàu bay Lucky",
+            "twracing":"Đua xe Taiwan",
+            "actracing":"Đua xe Australia",
+            "caracing":"Canada đua xe",
+            "skracing":"Slovakia đua xe"
+        },
+        "Sport":{
+            "cmd": "CMD thể thao",
+            "sboSport": "SBO",
+            "saba": "SABA THỂ THAO",
+            "imSport": "IM THỂ THAO E-SPORTS",
+            "imEsport": "IM THỂ THAO E-SPORTS",
+            "leihuo": "LEIHUO E-SPORTS"
+        },
+        "Lottery":{
+            "ok368": "OK368 XỔ SỐ",
+            "vr": "VR XỔ SỐ"
+        },
+        "LiveDealer":{
+            "wmCasino": "WM CASINO",
+            "sexyCasino": "AeSexy/SV388",
+            "sboCasino": "SBO",
+            "agCasino": "AG",
+            "bgCasino": "BG",
+            "dgCasino": "DG CASINO",
+            "bbinCasino": "BBIN CASINO"
+        },
+        "CockFight":{
+            "sv388": "AeSexy/SV388"
+        },
+        "Poker":{
+            "v8": "V8 Bài"
+        },
+        "Slot":{
+            "cq9Slot": "CQ9",
+            "cgSlot": "CG SLOTS",
+            "sboSlot": "SBO",
+            "agSlot": "AG SLOTS",
+            "mgSlot": "MG SLOTS",
+            "jdbSlot": "JDB",
+            "pgSlot": "PG SLOTS",
+            "fcSlot": "FC SLOTS",
+            "jlSlot": "JL SLOTS"
+        },
+        "Fishing":{
+            "bgFishingMaster": "BG",
+            "bgFishing": "BG",
+            "cq9Fishing": "CQ9"
+        }
+    }
+}

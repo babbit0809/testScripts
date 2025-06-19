@@ -1,0 +1,58 @@
+{
+    "CN":{
+        "GamePage_Common":{
+            "OrderInfoTrace_No":"否",
+            "OrderInfoTrace_Yes":"是 (4)"
+        },
+        "UserPage":{
+            "DepositInfoStatus_New":"未转账",
+            "DepositInfoStatus_Done":"已到帐",
+            "WithdrawInfoStatus_New":"未处理",
+            "WithdrawInfoStatus_Review":"提现处理中",
+            "WithdrawInfoStatus_Reject":"已拒绝",
+            "WithdrawInfoStatus_Done":"已出款",
+            "WithdrawInfoStatus_Failed":"出款失败"
+        },
+        "AdminTool_TransferManagement":{
+            "TransferStatus_Done":"已完成",
+            "TransferType_LEG":"乐游棋牌",
+            "TransferType_IM1":"IM体育电竞",
+            "TransferType_IM3":"IM棋牌",
+            "TransferType_IBC":"沙巴体育",
+            "TransferType_BG":"BG",
+            "TransferType_KY":"开元棋牌",
+            "TransferType_TF":"雷火电竞",
+            "TransferType_DG":"DG真人"
+        }
+    },
+    "VN":{
+        "GamePage_Common":{
+            "OrderInfoTrace_No":"Không",
+            "OrderInfoTrace_Yes":"越南站無追號功能"
+        },
+        "UserPage":{
+            "DepositInfoStatus_New":"Chưa chuyển khoản",
+            "DepositInfoStatus_Done":"Đã nhận được",
+            "WithdrawInfoStatus_New":"Chưa xử lý",
+            "WithdrawInfoStatus_Review":"Đang xử lý rút tiền",
+            "WithdrawInfoStatus_Reject":"Đã từ chối",
+            "WithdrawInfoStatus_Done":"Đã xuất khoản",
+            "WithdrawInfoStatus_Failed":"Xuất khoản thất bại"
+        },
+        "AdminTool_TransferManagement":{
+            "TransferStatus_Done":"Đã hoàn thành",
+            "TransferType_IM1":"IM thể thao e-Sports",
+            "TransferType_IBC":"Saba thể thao",
+            "TransferType_TF":"Leihuo e-Sports",
+            "TransferType_DG":"DG Casino",
+            "TransferType_WM":"WM Casino",
+            "TransferType_Sexy":"Sexy Baccarat",
+            "TransferType_CMD":"CMD thể thao",
+            "TransferType_SBO":"SBO",
+            "TransferType_CQ9":"CQ9",
+            "TransferType_CG":"CG SLOTS",
+            "TransferType_LC":"LC Bài",
+            "TransferType_BBIN":"BBIN Casino"
+        }
+    }
+}

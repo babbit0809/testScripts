@@ -1,0 +1,267 @@
+{
+    "domain": {
+        "Version": {
+            "qat": "http://q-clf-func-version-001.johnsontechinc.com",
+            "stg": "https://version.apl-01.z0229z1m.com"
+        },
+        "Portal": {
+            "qat": "http://q-clf-as-portal-001.johnsontechinc.com",
+            "stg": "https://portal.apl-01.z0229z1m.com"
+        },
+        "Oauth": {
+            "qat": "http://q-clf-as-oauth-001.johnsontechinc.com",
+            "stg": "https://oauth.apl-01.z0229z1m.com"
+        },
+        "BU": {
+            "qat": "http://q-clf-as-bu-001.johnsontechinc.com",
+            "stg": "https://bu.apl-01.z0229z1m.com"
+        },
+        "AdminTool": {
+            "qat": "http://q-clf-as-admintool-001.johnsontechinc.com",
+            "stg": "https://s-apl-as-admintool-101.azurewebsites.net"
+        },
+        "Financial": {
+            "qat": "http://q-clf-as-financial-001.johnsontechinc.com",
+            "stg": "https://s-apl-as-financial-101.azurewebsites.net"
+        },
+        "Storage": {
+            "qat":"https://qaplstgcommon101.blob.core.windows.net",
+            "stg":"https://saplstgcommon101.blob.core.windows.net"
+        }
+    },
+    "path": {
+        "Version": {
+            "AllowAnonymous": {
+                "check": ["GET", "/api/v2/check"]
+            }
+        },
+        "Portal": {
+            "members": {
+                "me": ["GET", "/v1/api/me"],
+                "vip": ["GET", "/v1/api/me/vip"]
+            }
+        },
+        "Oauth": {
+            "Authorization": {
+                "Token": ["POST", "/Token"]
+            }
+        },
+        "BU": {
+            "Betting": {
+                "bulk": ["POST","/v2/api/betting/bulk"],
+                "instant": ["POST","/v2/api/betting/instant"]
+            },
+            "Planning": {
+                "create": ["POST","/v2/api/planning/create"]
+            }
+        },
+        "AdminTool": {
+            "User": {
+                "Login": ["POST","/api/User/Login"]
+            },
+            "Option": {
+                "MemberBank": ["GET","/api/Option/MemberBank"],
+                "TransferTypes": ["GET","/api/Option/TransferTypes"],
+                "No3rdLotteries": ["GET","/api/Option/LotteryTypes/No3rdLotteries"],
+                "ThirdPartyLotteryTypes": ["GET","/api/Option/V2/ThirdPartyLotteryTypes"]
+            },
+            "Member": {
+                "Search": ["POST","/api/Member/Search"],
+                "Create": ["POST","/api/Member/Create"],
+                "Member": ["GET","/api/Member/{memberId}"],
+                "MemberBank_GET": ["GET","/api/Member/MemberBank/{memberId}"],
+                "MemberBank_POST": ["POST","/api/Member/MemberBank"],
+                "MemberBank_Patch": ["Patch","/api/Member/MemberBank"],
+                "CryptoCurrencyWallet_GET": ["GET","/api/Member/CryptoCurrencyWallet/{memberId}"],
+                "CryptoCurrencyWallet_POST": ["POST","/api/Member/CryptoCurrencyWallet"],
+                "CryptoCurrencyWallet_Patch": ["Patch","/api/Member/CryptoCurrencyWallet"],
+                "Security": ["GET","/api/Member/Security/{memberId}"],
+                "smsLog": ["GET","/api/Member/Security/smsLog"],
+                "IntegratedRecord": ["POST","/api/Member/IntegratedRecord"],
+                "Log": ["POST","/api/Member/Log/{memberId}"],
+                "BasicSetting": ["PUT","/api/Member/Update/BasicSetting"],
+                "ClearPhoneVerify":["POST","/api/Member/ClearPhoneVerify/{memberId}"],
+                "Email":["DELETE","/api/Member/Security/Email/{memberId}"],
+                "Level": ["GET","/api/Member/Level"],
+                "LevelBonus": ["GET","/api/Member/LevelBonus"],
+                "LevelReturn": ["GET","/api/Member/LevelReturn"]
+            },
+            "Affiliate": {
+                "Search": ["POST","/api/Affiliate/Search"],
+                "Create": ["POST","/api/Affiliate/Create"],
+                "MemberBank_GET": ["GET","/api/Affiliate/MemberBank/{memberId}"],
+                "MemberBank_POST": ["POST","/api/Affiliate/MemberBank"],
+                "CryptoCurrencyWallet_GET": ["GET","/api/Affiliate/CryptoCurrencyWallet/{memberId}"],
+                "CryptoCurrencyWallet_POST": ["POST","/api/Affiliate/CryptoCurrencyWallet"],
+                "BasicSetting": ["PUT","/api/Affiliate/Update/BasicSetting"],
+                "Dividends": ["POST","/api/Affiliate/Dividends"]
+            },
+            "Deposit": {
+                "Deposit": ["PATCH","/api/Deposit/{depositId}"]
+            },
+            "Turnover": {
+                "Search": ["POST","/api/v2/Turnover/Search"],
+                "BatchUpdate": ["POST","/api/v2/Turnover/BatchUpdate"]
+            },
+            "Withdrawal": {
+                "Status": ["PATCH","/api/Withdrawal/{withdrawalNo}/Status"]
+            },
+            "QuickDepositSetting": {
+                "Search": ["POST","/api/QuickDepositSetting/Search"],
+                "QuickDepositSetting_POST": ["POST","/api/QuickDepositSetting"],
+                "QuickDepositSetting_PUT": ["PUT","/api/QuickDepositSetting/{settingId}"]
+            },
+            "QuickDeposit": {
+                "QuickDeposit": ["PUT","/api/QuickDeposit"]
+            },
+            "FundTransfer": {
+                "Manage": ["POST","/api/FundTransferLog/Manage"]
+            },
+            "TransactionLog": {
+                "Search": ["POST","/api/TrasactionLog/Search"]
+            },
+            "Bets": {
+                "Search": ["POST","/api/Bets/Search"],
+                "Bets": ["GET","/api/Bets/{betOrderNumber}"],
+                "Export": ["POST","/api/Bets/Export"],
+                "Cancel": ["PATCH","/api/Bets/Cancel"],
+                "History": ["POST","/api/Bets/Search/History"]
+            },
+            "ThirdPartyBetLog": {
+                "Search": ["POST","/api/ThirdPartyBetLog/Search"]
+            },
+            "Lottery": {
+                "Search": ["POST","/api/Lottery/Search"],
+                "Switch_POST": ["POST","/api/Lottery/Switch"],
+                "Switch_PATCH": ["PATCH","/api/Lottery/Switch"]
+            },
+            "IssueNumber": {
+                "Search": ["POST","/api/IssueNumber/Search"],
+                "IssueNumber": ["PUT","/api/IssueNumber/{lotteryHistoryId}"],
+                "Cancel": ["PATCH","/api/IssueNumber/{lotteryHistoryId}/Cancel"],
+                "TrailCalculationBonus": ["POST","/api/IssueNumber/{lotteryHistoryId}/TrailCalculationBonus"],
+                "Settle": ["PATCH","/api/IssueNumber/{lotteryHistoryId}/Settle"]
+            },
+            "BetSection": {
+                "Search": ["POST","/api/BetSection/Search"],
+                "BetSection": ["PUT","/api/BetSection/{betTypeId}"]
+            },
+            "BetRule": {
+                "Search": ["POST","/api/BetRule/Search"],
+                "BetRule": ["PUT","/api/BetRule/{betRuleId}"]
+            },
+            "LobbyImage": {
+                "BannerSetting": ["GET","/api/Banner/BannerSetting/{agentId}"]
+            },
+            "Image": {
+                "upload": ["POST","/api/v2/Image/upload/{type}"]
+            },
+            "Activity": {
+                "Type": ["GET","/api/v2/Activity/Type"],
+                "Search": ["POST","/api/v2/Activity/Search"],
+                "Activity_GET": ["GET","/api/v2/Activity/{activityId}"],
+                "Activity_POST": ["POST","/api/v2/Activity"],
+                "Activity_PUT": ["PUT","/api/v2/Activity"],
+                "Rule": ["GET","/api/v2/Activity/Rule/{activityId}"],
+                "Modify": ["POST","/api/v2/Activity/Rule/Modify"]
+            },
+            "OperatingReport": {
+                "Search_Affiliate": ["POST","/api/OperatingReport/Affiliate/Search"],
+                "Search_Member": ["POST","/api/OperatingReport/Member/Search"]
+            },
+            "AgentReport": {
+                "Search": ["POST","/api/AgentReport/Search"]
+            },
+            "operation": {
+                "Search": ["POST","/api/News/Search"]
+            }
+        },
+        "Financial": {
+            "Auth": {
+                "login": ["POST","/api/auth/login"]
+            },
+            "Deposit": {
+                "deposit": ["POST","/api/deposit"],
+                "update": ["POST","/api/deposit/update"]
+            },
+            "Main": {
+                "loadPayout": ["POST","/api/main/loadPayout"],
+                "loadPayout_cryptoCurrency": ["POST","/api/main/loadpayout-cryptoCurrency"],
+                "transfer": ["PUT","/api/main/payout/transfer"],
+                "payout": ["POST","/api/main/payout"]
+            }
+        }
+    },
+    "AdminTool_qat_sta":{
+        "vincentsta":{
+            "password":"pa88word",
+            "key":"MJRDKMBWMJSDOZRVMI4DIZRYMM4DQNLEMU2DINZYME4WKZLCMVSA"
+        }
+    },
+    "AdminTool_stg_sta":{
+        "vincentsta":{
+            "password":"pa88word",
+            "key":"GAZTGNLBMNSDGYZZGQ2TIOJSGU4DQMJQG5SDEY3GMZRWGMBTGM4A"
+        }
+    },
+    "AdminTool_qat_vt":{
+        "vincentvt":{
+            "password":"pa88word",
+            "key":"HE3DEOBTMM2TANLGGZRTIMZUME4TGZLFGZSWKYLFG5QWENJVG4ZQ"
+        }
+    },
+    "AdminTool_stg_vt":{
+        "vincentvt":{
+            "password":"pa88word",
+            "key":"MQYDGOJUMU2GKNBRGBRDINRUGM4TIOJTGBTDQMRRGZSDSMTFHAZQ"
+        }
+    },
+    "Financial_qat_sta":{
+        "vincent":{
+            "password":"pa88word",
+            "key":"OBQTQ5TJNZRWK3TU"
+        },
+        "clfoutput":{
+            "password":"pa88word",
+            "key":"OBQTQY3MMZXXK5DQ",
+            "userId":1149,
+            "accountId":1052
+        }
+    },
+    "Financial_stg_sta":{
+        "vincent":{
+            "password":"pa88word",
+            "key":"OBQTQ5TJNZRWK3TU"
+        },
+        "clfoutput":{
+            "password":"pa88word",
+            "key":"OBQTQY3MMZXXK5DQ",
+            "userId":1206,
+            "accountId":90
+        }
+    },
+    "Financial_qat_vt":{
+        "vincentvt":{
+            "password":"pa88word",
+            "key":"OBQTQ5TJNZRWK3TU"
+        },
+        "vtoutput":{
+            "password":"pa88word",
+            "key":"OBQTQ5TUN52XI4DV",
+            "userId":1152,
+            "accountId":1112
+        }
+    },
+    "Financial_stg_vt":{
+        "vincentvt":{
+            "password":"pa88word",
+            "key":"OBQTQ5TJNZRWK3TU"
+        },
+        "vtoutput":{
+            "password":"pa88word",
+            "key":"OBQTQ5TUN52XI4DV",
+            "userId":1208,
+            "accountId":156
+        }
+    }
+}

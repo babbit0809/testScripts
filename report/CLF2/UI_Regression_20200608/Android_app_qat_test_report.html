@@ -1,0 +1,1469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.common.min.js"></script>
+    <!-- <script type="text/javascript" src="js/echarts.common.min.js"></script> -->
+    
+    
+<style type="text/css" media="screen">
+    body        { font-family: Microsoft YaHei,Consolas,arial,sans-serif; font-size: 80%; }
+    table       { font-size: 100%; }
+    pre         { white-space: pre-wrap;word-wrap: break-word; }
+    /* -- heading ---------------------------------------------------------------------- */
+    h1 {
+        font-size: 16pt;
+        color: gray;
+    }
+    .heading {
+        margin-top: 0ex;
+        margin-bottom: 1ex;
+    }
+    .heading .attribute {
+        margin-top: 1ex;
+        margin-bottom: 0;
+    }
+    .heading .description {
+        margin-top: 2ex;
+        margin-bottom: 3ex;
+    }
+    /* -- css div popup ------------------------------------------------------------------------ */
+    a.popup_link {
+    }
+    a.popup_link:hover {
+        color: red;
+    }
+    .popup_window {
+        display: none;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        /*border: solid #627173 1px; */
+        padding: 10px;
+        /*background-color: #E6E6D6; */
+        font-family: "Lucida Console", "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 8pt;
+        /* width: 500px;*/
+    }
+    }
+    /* -- report ------------------------------------------------------------------------ */
+    #show_detail_line {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    #result_table {
+        width: 99%;
+    }
+    #header_row {
+        font-weight: bold;
+        color: #303641;
+        background-color: #ebebeb;
+    }
+    #total_row  { font-weight: bold; }
+    .passClass  { background-color: #bdedbc; }
+    .failClass  { background-color: #ffefa4; }
+    .errorClass { background-color: #ffc9c9; }
+    .passCase   { color: #6c6; }
+    .failCase   { color: #FF6600; font-weight: bold; }
+    .errorCase  { color: #c00; font-weight: bold; }
+    .hiddenRow  { display: none; }
+    .testcase   { margin-left: 2em; }
+    /* -- ending ---------------------------------------------------------------------- */
+    #ending {
+    }
+    #div_base {
+                position:absolute;
+                top:0%;
+                left:5%;
+                right:5%;
+                width: auto;
+                height: auto;
+                margin: -15px 0 0 0;
+    }
+</style>
+
+    
+</head>
+<body>
+    <script language="javascript" type="text/javascript"><!--
+    output_list = Array();
+    /* level - 0:Summary; 1:Failed; 2:All */
+    function showCase(level) {
+        trs = document.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length; i++) {
+            tr = trs[i];
+            id = tr.id;
+            if (id.substr(0,2) == 'ft') {
+                if (level < 1) {
+                    tr.className = 'hiddenRow';
+                }
+                else {
+                    tr.className = '';
+                }
+            }
+            if (id.substr(0,2) == 'pt') {
+                if (level > 1) {
+                    tr.className = '';
+                }
+                else {
+                    tr.className = 'hiddenRow';
+                }
+            }
+        }
+    }
+    function showClassDetail(cid, count) {
+        var id_list = Array(count);
+        var toHide = 1;
+        for (var i = 0; i < count; i++) {
+            tid0 = 't' + cid.substr(1) + '.' + (i+1);
+            tid = 'f' + tid0;
+            tr = document.getElementById(tid);
+            if (!tr) {
+                tid = 'p' + tid0;
+                tr = document.getElementById(tid);
+            }
+            id_list[i] = tid;
+            if (tr.className) {
+                toHide = 0;
+            }
+        }
+        for (var i = 0; i < count; i++) {
+            tid = id_list[i];
+            if (toHide) {
+                document.getElementById('div_'+tid).style.display = 'none'
+                document.getElementById(tid).className = 'hiddenRow';
+            }
+            else {
+                document.getElementById(tid).className = '';
+            }
+        }
+    }
+    function showTestDetail(div_id){
+        var details_div = document.getElementById(div_id)
+        var displayState = details_div.style.display
+        // alert(displayState)
+        if (displayState != 'block' ) {
+            displayState = 'block'
+            details_div.style.display = 'block'
+        }
+        else {
+            details_div.style.display = 'none'
+        }
+    }
+    function html_escape(s) {
+        s = s.replace(/&/g,'&amp;');
+        s = s.replace(/</g,'&lt;');
+        s = s.replace(/>/g,'&gt;');
+        return s;
+    }
+    /* obsoleted by detail in <div>
+    function showOutput(id, name) {
+        var w = window.open("", //url
+                        name,
+                        "resizable,scrollbars,status,width=800,height=450");
+        d = w.document;
+        d.write("<pre>");
+        d.write(html_escape(output_list[id]));
+        d.write("\n");
+        d.write("<a href='javascript:window.close()'>close</a>\n");
+        d.write("</pre>\n");
+        d.close();
+    }
+    */
+    --></script>
+    <div id="div_base">
+        
+    <div class='page-header'>
+        <h1>Test Report</h1>
+    <p class='attribute'><strong>Start Time:</strong> 2020-06-08 10:33:49</p>
+<p class='attribute'><strong>Duration:</strong> 2:18:44.567227</p>
+<p class='attribute'><strong>Status:</strong> PASS 172 FAIL 1</p>
+
+    </div>
+    <div style="float: left;width:50%;"><p class='description'></p></div>
+    <div id="chart" style="width:50%;height:400px;float:left;"></div>
+
+        
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>Summary</button>
+        <button class="btn btn-default" onclick='javascript:showCase(1)'>FAIL</button>
+        <button class="btn btn-default" onclick='javascript:showCase(2)'>All</button>
+    </div>
+    <p></p>
+    <table id='result_table' class="table table-bordered">
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row'>
+            <td>Test Suite/Test Case</td>
+            <td>Total</td>
+            <td>PASS</td>
+            <td>FAIL</td>
+            <td>ERROR</td>
+            <td>Info</td>
+        </tr>
+        
+    <tr class='passClass'>
+        <td>test_GamePage_SSC_TJC.GamePageSSCTJCTestCase</td>
+        <td>55</td>
+        <td>55</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c1',55)">Detail</a></td>
+    </tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_TJC_pro_normal_fiveStar_fiveStarDirectSelection</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_TJC_pro_normal_fiveStar_fiveStarOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_TJC_pro_normal_fiveStar_selection120</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_TJC_pro_normal_fiveStar_selection60</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_TJC_pro_normal_fiveStar_selection30</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_TJC_pro_normal_fiveStar_selection20</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_TJC_pro_normal_fiveStar_selection10</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_TJC_pro_normal_fiveStar_selection5</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_TJC_pro_normal_threeStar_front3Choice</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_TJC_pro_normal_threeStar_front3Order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_TJC_pro_normal_threeStar_middle3Choice</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_TJC_pro_normal_threeStar_middle3Order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_TJC_pro_normal_threeStar_back3Choice</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_TJC_pro_normal_threeStar_back3Order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_15_TJC_pro_normal_threeStar_front3Mix</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_16_TJC_pro_normal_threeStar_middle3Mix</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_17_TJC_pro_normal_threeStar_back3Mix</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_18_TJC_pro_normal_threeStarGroup3_front3Group3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_19_TJC_pro_normal_threeStarGroup3_middle3Group3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_TJC_pro_normal_threeStarGroup3_back3Group3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_21_TJC_pro_normal_threeStarGroup6_front3Group6</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_22_TJC_pro_normal_threeStarGroup6_middle3Group6</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.23' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_23_TJC_pro_normal_threeStarGroup6_back3Group6</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.24' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_24_TJC_pro_normal_twoStar_frontDirect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.25' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_25_TJC_pro_normal_twoStar_frontGroup</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.26' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_26_TJC_pro_normal_twoStar_frontOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.27' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_27_TJC_pro_normal_twoStar_backDirect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.28' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_28_TJC_pro_normal_twoStar_backGroup</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.29' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_29_TJC_pro_normal_twoStar_backOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.30' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_30_TJC_pro_normal_dingweidan</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.31' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_31_TJC_pro_normal_budingweidan_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.32' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_32_TJC_pro_normal_budingweidan_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.33' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_33_TJC_pro_normal_budingweidan_back3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.34' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_34_TJC_pro_normal_bigSmallOddEven</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.35' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_35_TJC_pro_normal_freeSelection_twoDirect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.36' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_36_TJC_pro_normal_freeSelection_twoGroup</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.36')" >
+        PASS</a>
+    <div id='div_pt1.36' class="popup_window">
+        <pre>pt1.36: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.37' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_37_TJC_pro_normal_freeSelection_twoOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.38' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_38_TJC_pro_normal_freeSelection_threeDirect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.39' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_39_TJC_pro_normal_freeSelection_threeGroup3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.40' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_40_TJC_pro_normal_freeSelection_threeGroup6</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.41' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_41_TJC_pro_normal_freeSelection_threeOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.42' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_42_TJC_pro_normal_freeSelection_fourDirect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.43' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_43_TJC_pro_normal_freeSelection_fourOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.44' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_44_TJC_two_side_firstBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.45' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_45_TJC_two_side_secondBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.46' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_46_TJC_two_side_thirdBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.47' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_47_TJC_two_side_fourthBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.48' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_48_TJC_two_side_fifthBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.49' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_49_TJC_two_side_total</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.50' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_50_TJC_two_side_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.51' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_51_TJC_two_side_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.52' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_52_TJC_two_side_back3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.53' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_53_TJC_two_side_dragon</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.54' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_54_TJC_two_side_tiger</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.55' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_55_TJC_two_side_equal</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>test_GamePage_11x5_JX11x5.GamePage11x5JX11x5TestCase</td>
+        <td>50</td>
+        <td>50</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c2',50)">Detail</a></td>
+    </tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_JX11x5_pro_normal_r2_standard</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        PASS</a>
+    <div id='div_pt2.1' class="popup_window">
+        <pre>pt2.1: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='currentIssueCountdownTextView')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_JX11x5_pro_normal_r2_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_JX11x5_pro_normal_r3_standard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_JX11x5_pro_normal_r3_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_JX11x5_pro_normal_r4_standard</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.5')" >
+        PASS</a>
+    <div id='div_pt2.5' class="popup_window">
+        <pre>pt2.5: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_JX11x5_pro_normal_r4_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_JX11x5_pro_normal_r5_standard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_JX11x5_pro_normal_r5_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_JX11x5_pro_normal_r6_standard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_JX11x5_pro_normal_r6_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_JX11x5_pro_normal_r7_standard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_JX11x5_pro_normal_r7_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_JX11x5_pro_normal_r8_standard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_JX11x5_pro_normal_r8_order</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_15_JX11x5_pro_normal_front1_directStandard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_16_JX11x5_pro_normal_front1_directOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_17_JX11x5_pro_normal_front2_directStandard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_18_JX11x5_pro_normal_front2_groupSelect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_19_JX11x5_pro_normal_front2_directOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_JX11x5_pro_normal_front3_directStandard</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_21_JX11x5_pro_normal_front3_groupSelect</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_22_JX11x5_pro_normal_front3_directOrder</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.23' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_23_JX11x5_pro_fun_sum_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.24' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_24_JX11x5_pro_fun_sum_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.25' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_25_JX11x5_pro_fun_sum_back3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.26' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_26_JX11x5_pro_fun_sum_front2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.27' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_27_JX11x5_pro_fun_sum_back2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.28' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_28_JX11x5_pro_fun_crossDegree_all5</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.29' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_29_JX11x5_pro_fun_crossDegree_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.30' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_30_JX11x5_pro_fun_crossDegree_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.31' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_31_JX11x5_pro_fun_crossDegree_back3</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.31')" >
+        PASS</a>
+    <div id='div_pt2.31' class="popup_window">
+        <pre>pt2.31: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt2.32' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_32_JX11x5_pro_fun_cowcow</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.33' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_33_JX11x5_pro_fun_cardPoint_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.34' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_34_JX11x5_pro_fun_cardPoint_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.35' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_35_JX11x5_pro_fun_cardPoint_back3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.36' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_36_JX11x5_pro_fun_dragonTiger_all5</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.37' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_37_JX11x5_pro_fun_dragonTiger_front3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.38' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_38_JX11x5_pro_fun_dragonTiger_middle3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.39' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_39_JX11x5_pro_fun_dragonTiger_back3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.40' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_40_JX11x5_pro_fun_dragonTiger_front2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.41' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_41_JX11x5_pro_fun_dragonTiger_back2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.42' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_42_JX11x5_pro_fun_alwaysGuess</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.43' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_43_JX11x5_two_side_firstBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.44' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_44_JX11x5_two_side_secondBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.45' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_45_JX11x5_two_side_thirdBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.46' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_46_JX11x5_two_side_fourthBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.47' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_47_JX11x5_two_side_fifthBall</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.48' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_48_JX11x5_two_side_total</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.49' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_49_JX11x5_two_side_dragon</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt2.50' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_50_JX11x5_two_side_tiger</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>test_GamePage_Quick3_HQuick3.GamePageQuick3HQuick3TestCase</td>
+        <td>15</td>
+        <td>15</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c3',15)">Detail</a></td>
+    </tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_HQuick3_pro_normal_sum</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        PASS</a>
+    <div id='div_pt3.1' class="popup_window">
+        <pre>pt3.1: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_HQuick3_pro_normal_continuous3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_HQuick3_pro_normal_same3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_HQuick3_pro_normal_differ3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_HQuick3_pro_normal_same2_singleChoice</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.5')" >
+        PASS</a>
+    <div id='div_pt3.5' class="popup_window">
+        <pre>pt3.5: 
+SubTestCase Pass:
+test_05_HQuick3_pro_normal_same2_singleChoice (test_GamePage_Quick3_HQuick3.GamePageQuick3HQuick3TestCase) [同號: 1 + 二同號通選 + 不同號: 2-6]</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_HQuick3_pro_normal_same2_singleChoice</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.6')" >
+        PASS</a>
+    <div id='div_pt3.6' class="popup_window">
+        <pre>pt3.6: 
+SubTestCase Pass:
+test_05_HQuick3_pro_normal_same2_singleChoice (test_GamePage_Quick3_HQuick3.GamePageQuick3HQuick3TestCase) [同號: 2-6 + 二同號通選 + 不同號: 1]</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt3.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_HQuick3_pro_normal_same2_multiChoices</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_HQuick3_pro_normal_differ2</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.8')" >
+        PASS</a>
+    <div id='div_pt3.8' class="popup_window">
+        <pre>pt3.8: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt3.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_HQuick3_two_side_army3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_HQuick3_two_side_fast3Sum</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_HQuick3_two_side_point</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_HQuick3_two_side_triple</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_HQuick3_two_side_long</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_HQuick3_two_side_short</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt3.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_HQuick3_two_side_fishShrimpCrab</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>test_GamePage_PK10_F3Racing.GamePagePK10F3RacingTestCase</td>
+        <td>13</td>
+        <td>13</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c4',13)">Detail</a></td>
+    </tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_F3Racing_pro_normal_guess1</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_F3Racing_pro_normal_guess12</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_F3Racing_pro_normal_guess123</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_F3Racing_pro_normal_firstToTenth</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.4')" >
+        PASS</a>
+    <div id='div_pt4.4' class="popup_window">
+        <pre>pt4.4: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt4.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_F3Racing_pro_fun_eat1</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_F3Racing_pro_fun_bet3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_F3Racing_pro_fun_eat3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_F3Racing_pro_fun_positionQ</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_F3Racing_pro_fun_winningStreak</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_F3Racing_two_side_twoface</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.10')" >
+        PASS</a>
+    <div id='div_pt4.10' class="popup_window">
+        <pre>pt4.10: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt4.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_F3Racing_two_side_combination1and2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_F3Racing_two_side_sum1and2</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt4.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_F3Racing_two_side_firsttotenth</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.13')" >
+        PASS</a>
+    <div id='div_pt4.13' class="popup_window">
+        <pre>pt4.13: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>test_GamePage_MarkSix_FMark6.GamePageMarkSixFMark6TestCase</td>
+        <td>19</td>
+        <td>18</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c5',19)">Detail</a></td>
+    </tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_FMark6_pro_normal_specialNo</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_02_FMark6_pro_normal_mainNo</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        FAIL</a>
+    <div id='div_ft5.2' class="popup_window">
+        <pre>ft5.2: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+Traceback (most recent call last):
+  File "C:\Users\alvis.chen\mobileAuto\test_UI\case\test_GamePage_MarkSix_FMark6.py", line 62, in test_02_FMark6_pro_normal_mainNo
+    Assertion.assertOrderInfo(expect_data, order_info_confirm, order_info_done)
+  File "C:\Users\alvis.chen\mobileAuto\utils\Assertion.py", line 23, in assertOrderInfo
+    self.assertEqual(order_info_confirm[count], expect_data[count])
+AssertionError: '1.12' != '1.14'
+- 1.12
+?    ^
++ 1.14
+?    ^
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_FMark6_pro_normal_main1to6_main1st</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_FMark6_pro_normal_main1to6_main2nd</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_FMark6_pro_normal_main1to6_main3rd</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_FMark6_pro_normal_main1to6_main4th</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_FMark6_pro_normal_main1to6_main5th</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.7')" >
+        PASS</a>
+    <div id='div_pt5.7' class="popup_window">
+        <pre>pt5.7: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_FMark6_pro_normal_main1to6_main6th</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_FMark6_pro_normal_mainSpecial_main1Special</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_FMark6_pro_normal_mainSpecial_main2Special</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.10')" >
+        PASS</a>
+    <div id='div_pt5.10' class="popup_window">
+        <pre>pt5.10: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_FMark6_pro_normal_mainSpecial_main3Special</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.11')" >
+        PASS</a>
+    <div id='div_pt5.11' class="popup_window">
+        <pre>pt5.11: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_FMark6_pro_normal_mainSpecial_main4Special</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_FMark6_pro_normal_mainSpecial_main5Special</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.13')" >
+        PASS</a>
+    <div id='div_pt5.13' class="popup_window">
+        <pre>pt5.13: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_FMark6_pro_normal_mainSpecial_main6Special</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_FMark6_pro_normal_halfBall</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.15')" >
+        PASS</a>
+    <div id='div_pt5.15' class="popup_window">
+        <pre>pt5.15: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_21_FMark6_pro_normal_tailNo</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_28_FMark6_pro_normal_zodiac1</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_29_FMark6_pro_normal_specialZodiac</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt5.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_44_FMark6_pro_normal_dt16</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.19')" >
+        PASS</a>
+    <div id='div_pt5.19' class="popup_window">
+        <pre>pt5.19: 1 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (ID='button1')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>test_UserPage.UserPageTestCase</td>
+        <td>21</td>
+        <td>21</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c6',21)">Detail</a></td>
+    </tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_deposit_via_Bank</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        PASS</a>
+    <div id='div_pt6.1' class="popup_window">
+        <pre>pt6.1: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@class='android.view.ViewGroup' and ./*[@id='order_number']]/*[2]')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_deposit_via_thirdParty</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.2')" >
+        PASS</a>
+    <div id='div_pt6.2' class="popup_window">
+        <pre>pt6.2: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@class='android.view.ViewGroup' and ./*[@id='order_number_3rd_party']]/*[2]')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_withdraw</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.3')" >
+        PASS</a>
+    <div id='div_pt6.3' class="popup_window">
+        <pre>pt6.3: Message: 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_transfer_to_thirdParty_LEG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_transfer_from_thirdParty_LEG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_transfer_to_thirdParty_IM1</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_transfer_from_thirdParty_IM1</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_transfer_to_thirdParty_IM3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_transfer_from_thirdParty_IM3</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_transfer_to_thirdParty_IBC</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_transfer_from_thirdParty_IBC</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_transfer_to_thirdParty_BG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_transfer_from_thirdParty_BG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_transfer_to_thirdParty_KY</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_15_transfer_from_thirdParty_KY</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_16_transfer_to_thirdParty_VA</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_17_transfer_from_thirdParty_VA</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_18_transfer_to_thirdParty_TF</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_19_transfer_from_thirdParty_TF</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_transfer_to_thirdParty_DG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt6.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_21_transfer_from_thirdParty_DG</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>173</td>
+            <td>172</td>
+            <td>1</td>
+            <td>0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div id='ending'>&nbsp;</div>
+        
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+        // 指定图表的配置项和数据
+        var option = {
+            title : {
+                text: 'Test Status',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color: ['#95b75d', 'grey', '#b64645'],
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['PASS','FAIL','ERROR']
+            },
+            series : [
+                {
+                    name: 'Test Status',
+                    type: 'pie',
+                    radius : '60%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:172, name:'PASS'},
+                        {value:1, name:'FAIL'},
+                        {value:0, name:'ERROR'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    </div>
+</body>
+</html>

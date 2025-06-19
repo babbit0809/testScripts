@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.common.min.js"></script>
+    <!-- <script type="text/javascript" src="js/echarts.common.min.js"></script> -->
+    
+    
+<style type="text/css" media="screen">
+    body        { font-family: Microsoft YaHei,Consolas,arial,sans-serif; font-size: 80%; }
+    table       { font-size: 100%; }
+    pre         { white-space: pre-wrap;word-wrap: break-word; }
+    /* -- heading ---------------------------------------------------------------------- */
+    h1 {
+        font-size: 16pt;
+        color: gray;
+    }
+    .heading {
+        margin-top: 0ex;
+        margin-bottom: 1ex;
+    }
+    .heading .attribute {
+        margin-top: 1ex;
+        margin-bottom: 0;
+    }
+    .heading .description {
+        margin-top: 2ex;
+        margin-bottom: 3ex;
+    }
+    /* -- css div popup ------------------------------------------------------------------------ */
+    a.popup_link {
+    }
+    a.popup_link:hover {
+        color: red;
+    }
+    .popup_window {
+        display: none;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        /*border: solid #627173 1px; */
+        padding: 10px;
+        /*background-color: #E6E6D6; */
+        font-family: "Lucida Console", "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 8pt;
+        /* width: 500px;*/
+    }
+    }
+    /* -- report ------------------------------------------------------------------------ */
+    #show_detail_line {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    #result_table {
+        width: 99%;
+    }
+    #header_row {
+        font-weight: bold;
+        color: #303641;
+        background-color: #ebebeb;
+    }
+    #total_row  { font-weight: bold; }
+    .passClass  { background-color: #bdedbc; }
+    .failClass  { background-color: #ffefa4; }
+    .errorClass { background-color: #ffc9c9; }
+    .passCase   { color: #6c6; }
+    .failCase   { color: #FF6600; font-weight: bold; }
+    .errorCase  { color: #c00; font-weight: bold; }
+    .hiddenRow  { display: none; }
+    .testcase   { margin-left: 2em; }
+    /* -- ending ---------------------------------------------------------------------- */
+    #ending {
+    }
+    #div_base {
+                position:absolute;
+                top:0%;
+                left:5%;
+                right:5%;
+                width: auto;
+                height: auto;
+                margin: -15px 0 0 0;
+    }
+</style>
+
+    
+</head>
+<body>
+    <script language="javascript" type="text/javascript"><!--
+    output_list = Array();
+    /* level - 0:Summary; 1:Failed; 2:All */
+    function showCase(level) {
+        trs = document.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length; i++) {
+            tr = trs[i];
+            id = tr.id;
+            if (id.substr(0,2) == 'ft') {
+                if (level < 1) {
+                    tr.className = 'hiddenRow';
+                }
+                else {
+                    tr.className = '';
+                }
+            }
+            if (id.substr(0,2) == 'pt') {
+                if (level > 1) {
+                    tr.className = '';
+                }
+                else {
+                    tr.className = 'hiddenRow';
+                }
+            }
+        }
+    }
+    function showClassDetail(cid, count) {
+        var id_list = Array(count);
+        var toHide = 1;
+        for (var i = 0; i < count; i++) {
+            tid0 = 't' + cid.substr(1) + '.' + (i+1);
+            tid = 'f' + tid0;
+            tr = document.getElementById(tid);
+            if (!tr) {
+                tid = 'p' + tid0;
+                tr = document.getElementById(tid);
+            }
+            id_list[i] = tid;
+            if (tr.className) {
+                toHide = 0;
+            }
+        }
+        for (var i = 0; i < count; i++) {
+            tid = id_list[i];
+            if (toHide) {
+                document.getElementById('div_'+tid).style.display = 'none'
+                document.getElementById(tid).className = 'hiddenRow';
+            }
+            else {
+                document.getElementById(tid).className = '';
+            }
+        }
+    }
+    function showTestDetail(div_id){
+        var details_div = document.getElementById(div_id)
+        var displayState = details_div.style.display
+        // alert(displayState)
+        if (displayState != 'block' ) {
+            displayState = 'block'
+            details_div.style.display = 'block'
+        }
+        else {
+            details_div.style.display = 'none'
+        }
+    }
+    function html_escape(s) {
+        s = s.replace(/&/g,'&amp;');
+        s = s.replace(/</g,'&lt;');
+        s = s.replace(/>/g,'&gt;');
+        return s;
+    }
+    /* obsoleted by detail in <div>
+    function showOutput(id, name) {
+        var w = window.open("", //url
+                        name,
+                        "resizable,scrollbars,status,width=800,height=450");
+        d = w.document;
+        d.write("<pre>");
+        d.write(html_escape(output_list[id]));
+        d.write("\n");
+        d.write("<a href='javascript:window.close()'>close</a>\n");
+        d.write("</pre>\n");
+        d.close();
+    }
+    */
+    --></script>
+    <div id="div_base">
+        
+    <div class='page-header'>
+        <h1>Test Report</h1>
+    <p class='attribute'><strong>Start Time:</strong> 2020-06-03 13:50:05</p>
+<p class='attribute'><strong>Duration:</strong> 0:15:10.247019</p>
+<p class='attribute'><strong>Status:</strong> PASS 21</p>
+
+    </div>
+    <div style="float: left;width:50%;"><p class='description'></p></div>
+    <div id="chart" style="width:50%;height:400px;float:left;"></div>
+
+        
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>Summary</button>
+        <button class="btn btn-default" onclick='javascript:showCase(1)'>FAIL</button>
+        <button class="btn btn-default" onclick='javascript:showCase(2)'>All</button>
+    </div>
+    <p></p>
+    <table id='result_table' class="table table-bordered">
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row'>
+            <td>Test Suite/Test Case</td>
+            <td>Total</td>
+            <td>PASS</td>
+            <td>FAIL</td>
+            <td>ERROR</td>
+            <td>Info</td>
+        </tr>
+        
+    <tr class='passClass'>
+        <td>test_UserPage.UserPageTestCase</td>
+        <td>21</td>
+        <td>21</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c1',21)">Detail</a></td>
+    </tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_deposit_via_Bank</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_deposit_via_thirdParty</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        PASS</a>
+    <div id='div_pt1.2' class="popup_window">
+        <pre>pt1.2: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='TBODY']/*[1]/*[2]')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='TBODY']/*[1]/*[2]')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_withdraw</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        PASS</a>
+    <div id='div_pt1.3' class="popup_window">
+        <pre>pt1.3: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@class='swal2-confirm swal2-styled']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_04_transfer_to_thirdParty_LEG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        PASS</a>
+    <div id='div_pt1.4' class="popup_window">
+        <pre>pt1.4: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_05_transfer_from_thirdParty_LEG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        PASS</a>
+    <div id='div_pt1.5' class="popup_window">
+        <pre>pt1.5: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_06_transfer_to_thirdParty_IM1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        PASS</a>
+    <div id='div_pt1.6' class="popup_window">
+        <pre>pt1.6: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_07_transfer_from_thirdParty_IM1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        PASS</a>
+    <div id='div_pt1.7' class="popup_window">
+        <pre>pt1.7: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_08_transfer_to_thirdParty_IM3</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        PASS</a>
+    <div id='div_pt1.8' class="popup_window">
+        <pre>pt1.8: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_09_transfer_from_thirdParty_IM3</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        PASS</a>
+    <div id='div_pt1.9' class="popup_window">
+        <pre>pt1.9: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_10_transfer_to_thirdParty_IBC</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        PASS</a>
+    <div id='div_pt1.10' class="popup_window">
+        <pre>pt1.10: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_transfer_from_thirdParty_IBC</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        PASS</a>
+    <div id='div_pt1.11' class="popup_window">
+        <pre>pt1.11: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_transfer_to_thirdParty_BG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        PASS</a>
+    <div id='div_pt1.12' class="popup_window">
+        <pre>pt1.12: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_transfer_from_thirdParty_BG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        PASS</a>
+    <div id='div_pt1.13' class="popup_window">
+        <pre>pt1.13: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_transfer_to_thirdParty_KY</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
+        PASS</a>
+    <div id='div_pt1.14' class="popup_window">
+        <pre>pt1.14: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_15_transfer_from_thirdParty_KY</div></td>
+    <td colspan='5' align='center'>PASS</td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_16_transfer_to_thirdParty_VA</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.16')" >
+        PASS</a>
+    <div id='div_pt1.16' class="popup_window">
+        <pre>pt1.16: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_17_transfer_from_thirdParty_VA</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.17')" >
+        PASS</a>
+    <div id='div_pt1.17' class="popup_window">
+        <pre>pt1.17: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_18_transfer_to_thirdParty_TF</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        PASS</a>
+    <div id='div_pt1.18' class="popup_window">
+        <pre>pt1.18: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+5 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+6 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+7 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+8 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+9 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+10 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+11 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+12 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+13 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+14 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_19_transfer_from_thirdParty_TF</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        PASS</a>
+    <div id='div_pt1.19' class="popup_window">
+        <pre>pt1.19: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[contains(@class, 'confirm')]')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_transfer_to_thirdParty_DG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.20')" >
+        PASS</a>
+    <div id='div_pt1.20' class="popup_window">
+        <pre>pt1.20: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_21_transfer_from_thirdParty_DG</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.21')" >
+        PASS</a>
+    <div id='div_pt1.21' class="popup_window">
+        <pre>pt1.21: 1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[1]/*[1]/*/*/*[@nodeName='SPAN']')) 
+
+1 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+2 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+3 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+4 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+5 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+6 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+7 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+8 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+9 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+10 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+11 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+12 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+13 Message: no such element (An element could not be located on the page using the given search parameters (XPATH='//*[@nodeName='SECTION']/*[1]/*[2]/*[12]/*/*[@nodeName='SPAN']')) 
+
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>21</td>
+            <td>21</td>
+            <td>0</td>
+            <td>0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div id='ending'>&nbsp;</div>
+        
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+        // 指定图表的配置项和数据
+        var option = {
+            title : {
+                text: 'Test Status',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color: ['#95b75d', 'grey', '#b64645'],
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['PASS','FAIL','ERROR']
+            },
+            series : [
+                {
+                    name: 'Test Status',
+                    type: 'pie',
+                    radius : '60%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:21, name:'PASS'},
+                        {value:0, name:'FAIL'},
+                        {value:0, name:'ERROR'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    </div>
+</body>
+</html>

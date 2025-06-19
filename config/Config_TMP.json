@@ -1,0 +1,47 @@
+{
+    "API": {
+        "account": "xhadam1111",
+        "password": "xhadam1111"
+    },
+    "Android": {
+        "sta": {
+            "account": "xhadam1111",
+            "version_qat": "1.6.33.21091402",
+            "version_stg": "1.6.33.21091601",
+            "app_path_qat": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\sta01-1.6.33.21091402.apk",
+            "app_path_stg": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\sta01-1.6.33.21091601.apk"
+        },
+        "vt": {
+            "account": "vtadam1234",
+            "version_qat": "1.6.33.21091402",
+            "version_stg": "1.6.33.21091601",
+            "app_path_qat": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\vt999-1.6.33.21091402.apk",
+            "app_path_stg": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\vt999-1.6.33.21091601.apk"
+        }
+    },
+    "iOS": {
+        "sta": {
+            "account": "alvistest201",
+            "version_qat": "1.6.33.21091501",
+            "version_stg": "1.6.33.21091601",
+            "app_path_qat": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\sta01-1.6.33.21091501.ipa",
+            "app_path_stg": "C:\\Users\\alvis.chen\\mobileAuto\\download\\sta01-1.6.35.21102201.ipa"
+        },
+        "vt": {
+            "account": "alvistest601",
+            "version_qat": "1.6.33.21091501",
+            "version_stg": "1.6.33.21091601",
+            "app_path_qat": "C:\\Users\\vincent.luo\\PycharmProjects\\Automation\\download\\vt999-1.6.33.21091501.ipa",
+            "app_path_stg": "C:\\Users\\alvis.chen\\mobileAuto\\download\\vt999-1.6.36.21110102.ipa"
+        },
+        "version_stg": "1.6.35.21102201"
+    },
+    "windows": {
+        "sta": {
+            "account": "alvistest201"
+        },
+        "vt": {
+            "account": "vtvins01"
+        }
+    }
+}
